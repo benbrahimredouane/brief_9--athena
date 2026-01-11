@@ -17,7 +17,6 @@ require_once 'repositories/CommentRepository.php';
 
 require_once 'services/AuthService.php';
 require_once 'services/TaskServices.php';
-require_once 'services/NotificationService.php';
 require_once 'services/AdminService.php';
 require_once 'services/ProjectService.php';
 require_once 'services/CommentService.php';
@@ -34,10 +33,9 @@ $commentRepository = new CommentRepository($db);
 
 
 $authService = new AuthService($userRepository);
-$taskService = new TaskService($taskRepository, $notificationService);
 $adminService = new AdminService($userRepository, $db);
 $projectService = new ProjectService($projectRepository);
-$commentService = new CommentService($commentRepository, $notificationService);
+$commentService = new CommentService($commentRepository);
 $action = $_GET['action'] ?? 'home';
 
 try {
